@@ -5,6 +5,8 @@
 * USARTでSTDOUTを使えるようにする
 * USARTからの入力で割り込みを受け付ける
 
+printf()が使えて、同時に入力時の割り込みも可能になる。
+
 ## 環境
 
 * CrossPack for AVR
@@ -35,7 +37,6 @@
 
 * CPUクロックスピードとボーレートはMakefile(avr-gccの-Dオプション)もしくはヘッダファイルに設定。
 * 「Hello World! 番号」を表示し続けて、受信があったら「recieved: 文字」を表示する。
-
 
 ## 参考URL
 [Simple Serial Communications With AVR Libc](http://www.appelsiini.net/2011/simple-usart-with-avr-libc)
