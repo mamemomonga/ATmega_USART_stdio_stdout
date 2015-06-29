@@ -19,7 +19,7 @@ int main(void) {
 	_delay_ms(1000);
 
 	// printf_Pを使うとプログラムメモリからフォーマットを呼び出すことができる。
-	printf_P(PSTR("start"));
+	printf_P(PSTR("\r\n --- start --- \r\n"));
 
 	uint8_t count=0;
     for(;;){
