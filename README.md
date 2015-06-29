@@ -1,4 +1,4 @@
-# ATmegaでUSARTでSTDOUTと割り込み入力
+# ATmegaのUSARTでSTDOUTと割り込み入力
 
 ## 概要
 
