@@ -11,16 +11,38 @@ printf()が使えて、同時に入力時の割り込みも可能になる。
 
 * CrossPack for AVR
 * ATmega88(ATmega88V)
-* AVRISP2
+* AVRISPmk2
 * FT-232R(UART-USB変換器)
 
-## 接続
+## Crosspack For AVR
+[CrossPack for AVR](https://www.obdev.at/products/crosspack/index.html)
+
+OSX向けAVR開発環境。avr-gcc, avrdudeなどがセットで入っている。
+
+インストール後、/usr/local/CrossPack-AVR/bin にパスを通す。
+
+	#!/bin/sh -x
+	export PATH=/usr/local/CrossPack-AVR/bin:$PATH
+	cd ~/Documents/AVR
+	pwd
+
+というような avr.sh を用意して、ターミナルを開く毎に
+
+	. avr.sh
+
+とすると必要なときにパスを追加できて便利。
+
+## 接続と書き込み
 
 28PinDIPのATmegaなら
 
 * RX,PD0(ピン2) を UART-USB変換器のTXへ
 * TX,PD1(ピン3) を UART-USB変換器のRXへ
 * UART-USB変換器のGNDをGNDへ
+* AVRISPmk2を接続
+
+make fuse でフューズビットの書き込み、ATmega88, 内蔵クロック8MHz, 8分周なし
+make でビルド、make flash で AVRISPmk2を使って書き込みという設定になっている。
 
 ## 初期化
 
