@@ -14,24 +14,6 @@ printf()が使えて、同時に入力時の割り込みも可能になる。
 * AVRISPmk2
 * FT-232R(UART-USB変換器)
 
-## Crosspack For AVR
-[CrossPack for AVR](https://www.obdev.at/products/crosspack/index.html)
-
-OSX向けAVR開発環境。avr-gcc, avrdudeなどがセットで入っている。
-
-インストール後、/usr/local/CrossPack-AVR/bin にパスを通す。
-
-	#!/bin/sh -x
-	export PATH=/usr/local/CrossPack-AVR/bin:$PATH
-	cd ~/Documents/AVR
-	pwd
-
-というような avr.sh を用意して、ターミナルを開く毎に
-
-	. avr.sh
-
-とすると必要なときにパスを追加できて便利。
-
 ## 接続と書き込み
 
 28PinDIPのATmegaなら
@@ -43,6 +25,8 @@ OSX向けAVR開発環境。avr-gcc, avrdudeなどがセットで入っている�
 
 make fuse でフューズビットの書き込み、ATmega88, 内蔵クロック8MHz, 8分周なし
 make でビルド、make flash で AVRISPmk2を使って書き込みという設定になっている。
+
+フューズビットを書き込まず買ってきたままだと8分周有効になっているのでうまく動かない。
 
 ## 初期化
 
@@ -57,7 +41,7 @@ make でビルド、make flash で AVRISPmk2を使って書き込みという設
 
 ## サンプルコード
 
-* CPUクロックスピードとボーレートはMakefile(avr-gccの-Dオプション)もしくはヘッダファイルに設定。
+* CPUクロックスピード(8MHz)とボーレート(38400)はMakefile(avr-gccの-Dオプション)もしくはヘッダファイルに設定。
 * 「Hello World! 番号」を表示し続けて、受信があったら「recieved: 文字」を表示する。
 
 ## 参考URL
@@ -68,4 +52,26 @@ make でビルド、make flash で AVRISPmk2を使って書き込みという設
 [WormFood's AVR Baud Rate Calculator](http://wormfood.net/avrbaudcalc.php)
 
 [LUFA Serial_AVR8.c](https://github.com/abcminiuser/lufa/blob/master/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c)
+
+## Crosspack For AVR
+[CrossPack for AVR](https://www.obdev.at/products/crosspack/index.html)
+
+OSX向けAVR開発環境。avr-gcc, avrdudeなどがセットで入っている。
+
+インストール後、/usr/local/CrossPack-AVR/bin にパスを通す。
+
+## 必要なときだけパスを通したい
+
+	#!/bin/sh -x
+	export PATH=/usr/local/CrossPack-AVR/bin:$PATH
+	cd ~/Documents/AVR
+	pwd
+
+というような avr.sh をHOMEディレクトリにおいて、ターミナルを開く毎に
+
+	$ . ~/avr.sh
+
+とすると必要なときにパスを追加できて便利。
+3行目のcd のところにはドキュメントなどを置いている任意のフォルダを指定しておく。
+
 
