@@ -17,6 +17,8 @@ int main(void) {
 	sei();
 
 	_delay_ms(1000);
+
+	// printf_Pを使うとプログラムメモリからフォーマットを呼び出すことができる。
 	printf_P(PSTR("start"));
 
 	uint8_t count=0;
